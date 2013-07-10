@@ -19,6 +19,7 @@ where:
 - valid hours: 00, 06, 12, 18
 - at 22:30 the forecast from 18 was not ready yet
 - at 23:10 still not ready
+- changed to 18 around midnight (6 hours later then)
 
 - displayed image is:
 http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate=2013070912&row=418&col=223&lang=pl
@@ -50,5 +51,57 @@ Apx.row = ROUND(-27.23*latitude+1820.3)
 Apx.col = ROUND(17.09*longitude-108.61)
 
 Apx.col is far away for extreme longitudes (Lichtenstein, Ryga)
+
+
+Time to start with the widget tutorial: https://developer.apple.com/library/mac/#documentation/AppleApplications/Conceptual/Dashcode_UserGuide/Contents/Resources/en.lproj/MakingaWidgetwithDashcode/MakingaWidgetwithDashcode.html
+
+Getting Dashcode - Apple could fix the tutorial - googled the answer: xCode Menu -> Open Developer Tools -> More Developer Tools
+
+Browsing through "Code library". This may be useful:
+
+Get text from text field:
+// Values you provide
+var textFieldValue = document.getElementById("elementID");	// replace with ID of text field
+// Text field code
+textFieldValue = textFieldValue.value;
+
+
+
+
+// Indicates whether the browser is online or offline
+var online = window.navigator.onLine;
+if (!online) {
+	// Handle the case when the browser is offline
+	console.log("We are offline!");
+} else {
+	console.log("We are online!");
+}
+
+
+
+
+// Values you provide
+var scrollAreaToChange = document.getElementById("elementID");	// replace with ID of scroll area to change
+var newScrollAreaContent = "A string or raw HTML";				// new scroll area content
+
+// Scroll area code
+scrollAreaToChange.object.content.innerHTML = newScrollAreaContent;
+scrollAreaToChange.object.refresh();
+
+
+Ok, whatever i run - the widget disappears. Works nice if deployed though. Googling....
+
+http://next.drewk.net/2012/08/01/dashcode-bug-disappearing-widgets/
+
+answer: 
+defaults write com.apple.Dashcode NSQuitAlwaysKeepsWindows -bool false
++dashcode restart.
+
+Eh... i worked. Once. Only once. No luck ever since.
+
+
+
+
+
 
 
