@@ -3,6 +3,13 @@ meteo-pl-widget
 
 A dashboard widget (Mac OS X) displaying weather forecast from http://www.meteo.pl
 
+INSTALL
+-------
+File meteo_pl weather forecast.zip contains deployed widget. To install: unpack and double-click.
+
+Development notes:
+------------------
+
 First things first - let's analyse the ICM site (www.meteo.pl):
 - there are two models that seem interesting - the UM and COAMPS
 - found nice city name/coordinate list:
@@ -96,12 +103,5 @@ http://next.drewk.net/2012/08/01/dashcode-bug-disappearing-widgets/
 answer: 
 defaults write com.apple.Dashcode NSQuitAlwaysKeepsWindows -bool false
 +dashcode restart.
-
-Eh... i worked. Once. Only once. No luck ever since.
-
-
-
-
-
 
 
