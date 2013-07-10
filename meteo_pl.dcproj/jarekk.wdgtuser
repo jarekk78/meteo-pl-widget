@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CYLastWindowPosition</key>
-	<string>{412, 142}</string>
+	<string>{414, 142}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -14,8 +14,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {968, 385}}</string>
-			<string>{{0, 395}, {968, 368}}</string>
+			<string>{{0, 0}, {1337, 850}}</string>
+			<string>{{0, 860}, {1337, 158}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -47,12 +47,12 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {244, 784}}</string>
-			<string>{{245, 0}, {969, 784}}</string>
+			<string>{{0, 0}, {244, 1039}}</string>
+			<string>{{245, 0}, {1338, 1039}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>59 64 1213 805 0 0 1440 878 </string>
+	<string>258 110 1582 1060 0 0 1920 1178 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -64,7 +64,7 @@
 		<key>sizes</key>
 		<array>
 			<string>{{0, 0}, {246, 353}}</string>
-			<string>{{0, 363}, {246, 400}}</string>
+			<string>{{0, 363}, {246, 655}}</string>
 		</array>
 	</dict>
 	<key>Widget</key>
@@ -93,14 +93,14 @@
 				<integer>0</integer>
 				<integer>1</integer>
 			</array>
-		</array>
-		<key>Objects view last selections</key>
-		<array>
 			<array>
 				<integer>0</integer>
-				<integer>0</integer>
+				<integer>1</integer>
+				<integer>20</integer>
 			</array>
 		</array>
+		<key>Objects view last selections</key>
+		<array/>
 		<key>Opened Steps</key>
 		<array>
 			<integer>0</integer>

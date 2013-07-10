@@ -90,6 +90,10 @@ function showFront(event)
 {
     widget.setPreferenceForKey(document.getElementById("rowTF").value,"row");
     widget.setPreferenceForKey(document.getElementById("colTF").value,"col");
+    widget.setPreferenceForKey(document.getElementById("rowTF1").value,"row1");
+    widget.setPreferenceForKey(document.getElementById("colTF1").value,"col1");
+    widget.setPreferenceForKey(document.getElementById("modelSelectPopup").selectedIndex,"model");
+    widget.setPreferenceForKey(document.getElementById("delayTF").value,"delay");
     
     var front = document.getElementById("front");
     var back = document.getElementById("back");
@@ -123,9 +127,11 @@ function loadForecastImage() {
     var date="20130709"; // sample
 
     var cd = new Date();
-
+    cd.setHours( cd.getHours() - parseInt(document.getElementById("delayTF").value) );
+    
     var tzOffset = cd.getTimezoneOffset()/60+2;
     var hour = cd.getHours()+tzOffset;
+    
     if (hour < 6) { // if yesterdays forecast
         hour=18;
         cd.setDate( cd.getDate()-1 );
@@ -139,13 +145,28 @@ function loadForecastImage() {
     var year = cd.getFullYear();
     date = year+(month<10?"0"+month:month)+(day<10?"0"+day:day);
     date += (hour<10?"0"+hour:hour);
-//    document.getElementById("textField").value = date;
     
-    var row = document.getElementById("rowTF").value;
-    var col = document.getElementById("colTF").value;
-    var newScrollAreaContent = "<img style='float:left' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"12&row="+row+"&col="+col+"&lang=pl'>";
+    var newScrollAreaContent = "";
+
+    var model = (modelSelectPopup.options[modelSelectPopup.selectedIndex].value == "UM");
+
+    if (model) {
+        var row = document.getElementById("rowTF").value;
+        var col = document.getElementById("colTF").value;
+        newScrollAreaContent = "<img style='float:left' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
+        document.getElementById("textField").value = "http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
+    }
+    else {
+        var row = document.getElementById("rowTF1").value;
+        var col = document.getElementById("colTF1").value;
+        newScrollAreaContent = "<img style='float:left' width=540 height=660 src='http://www.meteo.pl/metco/mgram_pict.php?ntype=2n&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
+        document.getElementById("textField").value = "http://www.meteo.pl/metco/mgram_pict.php?ntype=2n&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
+    }
     if (with_legend) {
-        newScrollAreaContent = "<img style='float:left' src='http://www.meteo.pl/um/metco/leg_um_pl_20120615.png'>";
+        if (model)
+            newScrollAreaContent = "<img style='float:left' src='http://www.meteo.pl/um/metco/leg_um_pl_20120615.png'>";
+        else
+            newScrollAreaContent = "<img style='float:left' src='http://www.meteo.pl/metco/leg4_pl.png'>";
         document.getElementById("frontImg").width=document.getElementById("frontImg").width+50;
     }
     scrollAreaToChange.object.content.innerHTML = newScrollAreaContent;
@@ -158,26 +179,29 @@ function getDefaultPrefeneceForKey( def, key ) {
     return v;
 }
 
-function myLoadHandler(event) {
-    var row = widget.preferenceForKey("row");
-    if (!row) row=418;
-    document.getElementById("rowTF").value = getDefaultPrefeneceForKey( 418, "row" );
-    document.getElementById("colTF").value = getDefaultPrefeneceForKey( 223, "col" );
-    
-    var popup = document.getElementById("popup");
+function fillPopup( popupName, list ) {
+    var popup = document.getElementById(popupName);
     while (popup.length>0) popup.remove(0);
 
     var i=0;
-    for (i=0;i<XX.length;i++) {
-        popup.add( new Option(CITY_NAMES[i],i),i==0?null:popup.options[popup.length-1] );
+    for (i=0;i<list.length;i++) {
+        popup.add( new Option(list[i][0],i),i==0?null:popup.options[popup.length-1] );
     }
     popup.selectedIndex=0;
 }
 
-XX=[0,121,285,179,216,199,210,152,299,215,244,418,402,115,232,35,223,127,277,355,240,196,101,180,133,294,269,142,203,298,209,250,166,316,181,155,155 ];
-YY=[0,394,379,519,537,381,346,390,182,461,443,440,539,305,466,535,418,574,432,352,363,449,185,400,462,272,465,370,209,203,383,406,516,334,436,412,583 ];
-CITY_NAMES=["","Berlin","Białystok","Bratysława","Budapeszt","Bydgoszcz","Gdańsk","Gorzów Wielkopolski","Helsinki","Katowice","Kielce","Kijów","Kiszyniów","Kopenhaga","Kraków","Liechtenstein","Łódź","Lublana","Lublin","Mińsk","Olsztyn","Opole","Oslo","Poznań","Praga","Ryga","Rzeszów","Szczecin","Sztokholm","Tallinn","Toruń","Warszawa","Wiedeń","Wilno","Wrocław","Zielona Góra","Zagrzeb"];
+function myLoadHandler(event) {
+    document.getElementById("rowTF").value = getDefaultPrefeneceForKey( 418, "row" );
+    document.getElementById("colTF").value = getDefaultPrefeneceForKey( 223, "col" );
+    document.getElementById("rowTF1").value = getDefaultPrefeneceForKey( 418, "row1" );
+    document.getElementById("colTF1").value = getDefaultPrefeneceForKey( 223, "col1" );
+    document.getElementById("modelSelectPopup").selectedIndex = getDefaultPrefeneceForKey( 0, "model" );
+    document.getElementById("delayTF").value = getDefaultPrefeneceForKey( 0, "delay" );
 
+    
+    fillPopup("popup", cities_um);
+    fillPopup("popup2", cities_coamps);
+}
 
 with_legend = false;
 
@@ -185,8 +209,8 @@ function citySelectedOnClick(event)
 {
     var popup = document.getElementById("popup");
     if (popup.selectedIndex>0) {
-        document.getElementById("rowTF").value = YY[popup.options[popup.selectedIndex].value];
-        document.getElementById("colTF").value = XX[popup.options[popup.selectedIndex].value];
+        document.getElementById("rowTF").value = cities_um[popup.options[popup.selectedIndex].value][3];
+        document.getElementById("colTF").value = cities_um[popup.options[popup.selectedIndex].value][2];
     }
 }
 
@@ -208,5 +232,15 @@ function latLongOnClick(event)
     if (!isNaN(lat) && !isNaN(long)) {
         document.getElementById("rowTF").value = Math.round(-27.23*lat+1820.3);
         document.getElementById("colTF").value = Math.round(17.09*long-108.61);
+    }
+}
+
+
+function selectedCityCOAMPS(event)
+{
+    var popup = document.getElementById("popup2");
+    if (popup.selectedIndex>0) {
+        document.getElementById("rowTF1").value = cities_coamps[popup.options[popup.selectedIndex].value][3];
+        document.getElementById("colTF1").value = cities_coamps[popup.options[popup.selectedIndex].value][2];
     }
 }

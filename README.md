@@ -105,3 +105,46 @@ defaults write com.apple.Dashcode NSQuitAlwaysKeepsWindows -bool false
 +dashcode restart.
 
 
+The next day
+-------------
+
+There is a list of cities on the meteo.pl website - divided into 16 parts. All downloaded (manually).
+Every city link leads to an address: http://new.meteo.pl/um/php/meteorogram_id_um.php?ntype=0u&id=2201
+where id - city identificator.
+Image address is still http://new.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate=2013071000&row=418&col=223&lang=pl
+though.
+
+Every file contains a list of cities. One city entry: <A href="#" onClick='show_mgram(1134)'>Dobromierz, pow. świdnicki</a>
+hence:
+
+/<A href="#" onClick='show_mgram\((\d+)\)'>(.*)</a>/
+
+We will filter it with filter.pl:
+
+$str = join("",<STDIN>);
+@matches = ();
+push (@matches,"$2\t$1") while($str =~ /<A href="#" onClick='show_mgram\((\d{1,6})\)'>(.{1,35})<\/a>/g );
+foreach (@matches) {
+	@d = split("\t");
+	open(R, "wget \"http://new.meteo.pl/um/php/meteorogram_id_um.php?ntype=0u&id=$d[1]\" 2>/dev/null -O - |")  or die "Couldn't fork: $!\n";
+	while (<R>) { if ($_ =~ /var act_x = (\d+);var act_y = (\d+);/) {
+		push(@d,$1);
+		push(@d,$2);
+	} }
+	close(README);
+	print "\tnew Array(\"$d[0]\", $d[1], $d[2], $d[3] ),\n";
+	break;
+}
+
+cat *.html | perl filter.pl >cities_um.js
+
+Hope they won't dislike me for this additional work of their servers.
+
+For coamps it's just a change of url.
+
+At 17:29 the 06 forecast is still not available. Why? Is it always like this?
+
+citi lists are awfully sorted. unix sort leaves "Łodz" at the end of the list. Textwrangler sort mixes "L" and "Ł". Any idea anyone?
+
+
+
