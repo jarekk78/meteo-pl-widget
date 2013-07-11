@@ -20,8 +20,6 @@ var dashcodePartSpecs = {
     "text12": { "text": "Select a city", "view": "DC.Text" },
     "text13": { "text": "Delay", "view": "DC.Text" },
     "text14": { "text": "hours", "view": "DC.Text" },
-    "text15": { "text": "Delay", "view": "DC.Text" },
-    "text16": { "text": "hours", "view": "DC.Text" },
     "text17": { "text": "Delay", "view": "DC.Text" },
     "text18": { "text": "hours", "view": "DC.Text" },
     "text2": { "text": "Select a city", "view": "DC.Text" },
@@ -33,6 +31,7 @@ var dashcodePartSpecs = {
     "text8": { "text": "UM configuration:", "view": "DC.Text" },
     "text9": { "text": "COAMPS configuration:", "view": "DC.Text" }
 };
+
 
 
 

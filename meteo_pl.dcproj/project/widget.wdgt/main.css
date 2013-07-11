@@ -597,52 +597,6 @@ body {
     height: auto;
 }
 
-#delayTF1 {
-    position: absolute;
-    color: black;
-    font-family: HelveticaNeue;
-    font-size: 10pt;
-    width: 50px;
-    top: 455px;
-    left: 230px;
-}
-
-#text16 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    top: 457px;
-    left: 293px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text16 {
-    color: white;
-}
-
-#text15 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    top: 457px;
-    left: 187px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text15 {
-    color: white;
-}
-
 #text17 {
     font-size: 13px;
     font-family: 'Lucida Grande', Arial, sans-serif;

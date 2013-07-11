@@ -6,6 +6,7 @@ A dashboard widget (Mac OS X) displaying weather forecast from http://www.meteo.
 INSTALL
 -------
 File meteo_pl weather forecast.zip contains deployed widget. To install: unpack and double-click.
+Configure by setting row/col - separately for UM and COAMPS model.
 
 Development notes:
 ------------------
@@ -145,6 +146,5 @@ For coamps it's just a change of url.
 At 17:29 the 06 forecast is still not available. Why? Is it always like this?
 
 citi lists are awfully sorted. unix sort leaves "Łodz" at the end of the list. Textwrangler sort mixes "L" and "Ł". Any idea anyone?
-
 
 
