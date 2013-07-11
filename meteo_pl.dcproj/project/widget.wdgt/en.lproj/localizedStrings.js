@@ -5,6 +5,11 @@
  code generator otherwise the changes will be lost.
  */
 var localizedStrings = {
+    "Button": "Earlier",
+    "Button1": "Later",
+    "Done": "Done",
+    "Earlier": "Earlier",
     "Hello, World!": "Hello, World!",
-    "Done": "Done"
+    "Later": "Later"
 };
+

@@ -94,6 +94,7 @@ function showFront(event)
     widget.setPreferenceForKey(document.getElementById("colTF1").value,"col1");
     widget.setPreferenceForKey(document.getElementById("modelSelectPopup").selectedIndex,"model");
     widget.setPreferenceForKey(document.getElementById("delayTF").value,"delay");
+    widget.setPreferenceForKey(document.getElementById("delayTF2").value,"delay2");
     
     var front = document.getElementById("front");
     var back = document.getElementById("back");
@@ -120,14 +121,29 @@ if (window.widget) {
     widget.onsync = sync;
 }
 
+function get( elementId ) {
+    return document.getElementById( elementId).value;
+}
+
+function set( elementId, val ) {
+    document.getElementById( elementId).value = val;
+}
+
 function loadForecastImage() {
     var img = document.getElementById("image1");
     var scrollAreaToChange = document.getElementById("scrollArea");
 
     var date="20130709"; // sample
 
+    var model = (modelSelectPopup.options[modelSelectPopup.selectedIndex].value == "UM");
+    if (modelSelectPopup.options[modelSelectPopup.selectedIndex].value != modelSelectPopup1.options[modelSelectPopup1.selectedIndex].value)
+        model = (modelSelectPopup1.options[modelSelectPopup1.selectedIndex].value == "UM");
+
     var cd = new Date();
-    cd.setHours( cd.getHours() - parseInt(document.getElementById("delayTF").value) -6*(100-document.getElementById("slider").value) );
+    cd.setHours( cd.getHours() - parseInt(document.getElementById(model?"delayTF":"delayTF2").value) -6*(
+    
+    model ? (100-document.getElementById("slider").value):((Math.round((100-document.getElementById("slider").value) )/2)*2)
+    ) );
     
     var tzOffset = cd.getTimezoneOffset()/60+2;
     var hour = cd.getHours()+tzOffset;
@@ -140,6 +156,10 @@ function loadForecastImage() {
     else if (hour < 18) hour=6;
     else hour=12;
 
+    if (!model) {
+        if (hour<12) hour=0;
+        else hour=12;
+    }
     var day = cd.getDate();
     var month = cd.getMonth() + 1;
     var year = cd.getFullYear();
@@ -148,15 +168,11 @@ function loadForecastImage() {
     
     var newScrollAreaContent = "";
 
-    var model = (modelSelectPopup.options[modelSelectPopup.selectedIndex].value == "UM");
-    if (modelSelectPopup.options[modelSelectPopup.selectedIndex].value != modelSelectPopup1.options[modelSelectPopup1.selectedIndex].value)
-        model = (modelSelectPopup1.options[modelSelectPopup1.selectedIndex].value == "UM");
-
     var width = with_legend?370:540;
     
     if (model) {
-        var row = document.getElementById("rowTF").value;
-        var col = document.getElementById("colTF").value;
+        var row = get("rowTF");
+        var col = get("colTF");
         newScrollAreaContent = "<img width="+width+" height=660 style='float:left' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
         document.getElementById("textField").value = "http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
     }
@@ -195,13 +211,14 @@ function fillPopup( popupName, list ) {
 }
 
 function myLoadHandler(event) {
-    document.getElementById("rowTF").value = getDefaultPrefeneceForKey( 418, "row" );
-    document.getElementById("colTF").value = getDefaultPrefeneceForKey( 223, "col" );
-    document.getElementById("rowTF1").value = getDefaultPrefeneceForKey( 137, "row1" );
-    document.getElementById("colTF1").value = getDefaultPrefeneceForKey( 88, "col1" );
+    set( "rowTF", getDefaultPrefeneceForKey( 418, "row" ) );
+    set( "colTF", getDefaultPrefeneceForKey( 223, "col" ) );
+    set( "rowTF1", getDefaultPrefeneceForKey( 137, "row1" ) );
+    set( "colTF1", getDefaultPrefeneceForKey( 88, "col1" ) );
     document.getElementById("modelSelectPopup").selectedIndex = getDefaultPrefeneceForKey( 0, "model" );
     document.getElementById("modelSelectPopup1").selectedIndex = document.getElementById("modelSelectPopup").selectedIndex;
-    document.getElementById("delayTF").value = getDefaultPrefeneceForKey( 0, "delay" );
+    set( "delayTF", getDefaultPrefeneceForKey( 0, "delay" ) );
+    set( "delayTF2", getDefaultPrefeneceForKey( 0, "delay2" ) );
 
     
     fillPopup("popup", cities_um);
@@ -214,8 +231,8 @@ function citySelectedOnClick(event)
 {
     var popup = document.getElementById("popup");
     if (popup.selectedIndex>0) {
-        document.getElementById("rowTF").value = cities_um[popup.options[popup.selectedIndex].value][3];
-        document.getElementById("colTF").value = cities_um[popup.options[popup.selectedIndex].value][2];
+        set("rowTF", cities_um[popup.options[popup.selectedIndex].value][3] );
+        set("colTF", cities_um[popup.options[popup.selectedIndex].value][2] );
     }
 }
 
@@ -229,14 +246,11 @@ function imageClicked(event)
 
 function latLongOnClick(event)
 {
-    var latStr = document.getElementById("latTF").value;
-    var longStr = document.getElementById("longTF").value;
-    
-    var lat = parseFloat( latStr );
-    var long = parseFloat( longStr );
+    var lat = parseFloat( get("latTF") );
+    var long = parseFloat( get("longTF") );
     if (!isNaN(lat) && !isNaN(long)) {
-        document.getElementById("rowTF").value = Math.round(-27.23*lat+1820.3);
-        document.getElementById("colTF").value = Math.round(17.09*long-108.61);
+        set( "rowTF", Math.round(-27.23*lat+1820.3) );
+        set( "colTF", Math.round(17.09*long-108.61) );
     }
 }
 
@@ -245,19 +259,32 @@ function selectedCityCOAMPS(event)
 {
     var popup = document.getElementById("popup2");
     if (popup.selectedIndex>0) {
-        document.getElementById("rowTF1").value = cities_coamps[popup.options[popup.selectedIndex].value][3];
-        document.getElementById("colTF1").value = cities_coamps[popup.options[popup.selectedIndex].value][2];
+        set( "rowTF1", cities_coamps[popup.options[popup.selectedIndex].value][3] );
+        set( "colTF1", cities_coamps[popup.options[popup.selectedIndex].value][2] );
     }
 }
 
 
-function switchModelFront(event)
-{
+function switchModelFront(event) {
     loadForecastImage();
 }
 
 
-function delaySliderChange(event)
+function delaySliderChange(event) {
+    loadForecastImage();
+}
+
+
+function earlierBtnClick(event)
 {
+    set("slider", get("slider")-1);
+    loadForecastImage();
+}
+
+
+function laterBtnClick(event) {
+    var val = get("slider");
+    val++;
+    set("slider", val);
     loadForecastImage();
 }
