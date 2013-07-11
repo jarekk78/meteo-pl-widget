@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CYLastWindowPosition</key>
-	<string>{414, 142}</string>
+	<string>{400, 142}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -104,7 +104,7 @@
 			<array>
 				<integer>0</integer>
 				<integer>0</integer>
-				<integer>2</integer>
+				<integer>5</integer>
 			</array>
 		</array>
 		<key>Opened Steps</key>

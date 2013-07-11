@@ -127,7 +127,7 @@ function loadForecastImage() {
     var date="20130709"; // sample
 
     var cd = new Date();
-    cd.setHours( cd.getHours() - parseInt(document.getElementById("delayTF").value) );
+    cd.setHours( cd.getHours() - parseInt(document.getElementById("delayTF").value) -6*(100-document.getElementById("slider").value) );
     
     var tzOffset = cd.getTimezoneOffset()/60+2;
     var hour = cd.getHours()+tzOffset;
@@ -152,24 +152,26 @@ function loadForecastImage() {
     if (modelSelectPopup.options[modelSelectPopup.selectedIndex].value != modelSelectPopup1.options[modelSelectPopup1.selectedIndex].value)
         model = (modelSelectPopup1.options[modelSelectPopup1.selectedIndex].value == "UM");
 
+    var width = with_legend?370:540;
+    
     if (model) {
         var row = document.getElementById("rowTF").value;
         var col = document.getElementById("colTF").value;
-        newScrollAreaContent = "<img style='float:left' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
+        newScrollAreaContent = "<img width="+width+" height=660 style='float:left' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
         document.getElementById("textField").value = "http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
     }
     else {
         var row = document.getElementById("rowTF1").value;
         var col = document.getElementById("colTF1").value;
-        newScrollAreaContent = "<img style='float:left' width=540 height=660 src='http://www.meteo.pl/metco/mgram_pict.php?ntype=2n&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
+        newScrollAreaContent = "<img style='float:left' width="+width+" height=660 src='http://www.meteo.pl/metco/mgram_pict.php?ntype=2n&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
         document.getElementById("textField").value = "http://www.meteo.pl/metco/mgram_pict.php?ntype=2n&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
     }
     if (with_legend) {
         if (model)
-            newScrollAreaContent = "<img style='float:left' src='http://www.meteo.pl/um/metco/leg_um_pl_20120615.png'>";
+            newScrollAreaContent = "<img width="+(540-width)+" height=660 style='float:left' src='http://www.meteo.pl/um/metco/leg_um_pl_20120615.png'>"+newScrollAreaContent;
         else
-            newScrollAreaContent = "<img style='float:left' src='http://www.meteo.pl/metco/leg4_pl.png'>";
-        document.getElementById("frontImg").width=document.getElementById("frontImg").width+50;
+            newScrollAreaContent = "<img width="+(540-width)+" height=660 style='float:left' src='http://www.meteo.pl/metco/leg4_pl.png'>"+newScrollAreaContent;
+//        document.getElementById("frontImg").width=document.getElementById("frontImg").width+50;
     }
     scrollAreaToChange.object.content.innerHTML = newScrollAreaContent;
     scrollAreaToChange.object.refresh();
@@ -250,6 +252,12 @@ function selectedCityCOAMPS(event)
 
 
 function switchModelFront(event)
+{
+    loadForecastImage();
+}
+
+
+function delaySliderChange(event)
 {
     loadForecastImage();
 }
