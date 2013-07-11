@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="main.css">
     <script type="text/javascript" src="Parts/parts.js" charset="utf-8"></script>
     <script type="text/javascript" src="localizedStrings.js" charset="utf-8"></script>
+    <script type="text/javascript" src="cities_um.js" charset="utf-8"></script>
+    <script type="text/javascript" src="cities_coamps.js" charset="utf-8"></script>
     <script type="text/javascript" src="main.js" charset="utf-8"></script>
     <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleScrollbar.js" charset="utf-8"></script>
     <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleScrollArea.js" charset="utf-8"></script>
@@ -19,9 +21,16 @@
         <div id="scrollArea" apple-part="com.apple.Dashcode.part.scrollarea" apple-group="scrollArea" onclick="imageClicked(event)">
             <div id="content" class="content" apple-group="scrollArea" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow-x: hidden; overflow-y: hidden; ">
             </div></div>
+        <input id="textField" type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield">
+        <select id="modelSelectPopup1" apple-part="com.apple.Dashcode.part.backpopupbutton" apple-group="modelSelectPopup1" onclick="switchModelFront(event)">
+            <option class="apple-hidden" id="option8">UM</option>
+            <option class="apple-hidden" id="option9">COAMPS</option>
+        </select>
+        <input id="slider" apple-part="com.apple.Dashcode.part.slider" type="range" min="0" value="100" max="100">
     </div>
     <div id="back">
         <img id="backImg" src="Parts/Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.backimage" apple-style=" image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.1500,0.1500,0.1500; image-border-width: 3; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">
+        <div id="box" apple-part="com.apple.Dashcode.part.box"></div>
         <div id="done" class="apple-no-children" apple-part="com.apple.Dashcode.part.glassbutton"></div>
         <input id="rowTF" type="text" name="" value="418" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield">
         <input id="colTF" type="text" name="" value="223" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield">
@@ -41,6 +50,29 @@
         <input id="longTF" type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield">
         <div id="button1" apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 1,1,1,1; image-bottom-color: 0.6154,0.6154,0.6154,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0.5294,0.5294,0.5294,1; image-border-width: 1; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 0;"></div>
         <div id="text6" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;"></div>
+        <select id="modelSelectPopup" apple-part="com.apple.Dashcode.part.backpopupbutton" apple-group="popup1">
+            <option class="apple-hidden" id="option3">UM</option>
+            <option class="apple-hidden" id="option4">COAMPS</option>
+        </select>
+        <div id="text7" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+        <div id="text8" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+        <div id="box1" apple-part="com.apple.Dashcode.part.box">
+            <div id="text9" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+            <div id="text10" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+            <div id="text11" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+            <input id="rowTF1" type="text" name="" value="418" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield">
+            <input id="colTF1" type="text" name="" value="223" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield">
+            <div id="text12" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+            <select id="popup2" apple-part="com.apple.Dashcode.part.backpopupbutton" apple-group="popup2">
+                <option class="apple-hidden" id="option5">Item 1</option>
+                <option class="apple-hidden" id="option6">Item 2</option>
+                <option class="apple-hidden" id="option7">Item 3</option>
+            </select>
+            <div id="button2" apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 1,1,1,1; image-bottom-color: 0.6154,0.6154,0.6154,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0.5294,0.5294,0.5294,1; image-border-width: 1; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 0;"></div>
+        </div>
+        <div id="text13" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+        <div id="text14" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+        <input id="delayTF" type="text" name="" value="0" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield">
     </div>
 </body>
 </html>

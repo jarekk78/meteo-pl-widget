@@ -14,8 +14,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1195, 604}}</string>
-			<string>{{0, 614}, {1195, 158}}</string>
+			<string>{{0, 0}, {1195, 602}}</string>
+			<string>{{0, 612}, {1195, 160}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -100,7 +100,13 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array/>
+		<array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>2</integer>
+			</array>
+		</array>
 		<key>Opened Steps</key>
 		<array>
 			<integer>0</integer>
@@ -109,7 +115,7 @@
 		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>back</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>

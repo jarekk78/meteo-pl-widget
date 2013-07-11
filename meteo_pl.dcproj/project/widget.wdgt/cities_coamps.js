@@ -1,4 +1,5 @@
-cities_coamps = new Array(
+var cities_coamps = new Array(
+	new Array("(select city)", 0,0,0 ),
 	new Array("Abramów, pow. lubartowski", 1303, 103, 139 ),
 	new Array("Adamów, pow. łukowski", 1343, 102, 137 ),
 	new Array("Adamów, pow. zamojski", 1430, 107, 146 ),
