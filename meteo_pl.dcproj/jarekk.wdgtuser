@@ -14,8 +14,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1337, 850}}</string>
-			<string>{{0, 860}, {1337, 158}}</string>
+			<string>{{0, 0}, {1195, 604}}</string>
+			<string>{{0, 614}, {1195, 158}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -47,12 +47,12 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {244, 1039}}</string>
-			<string>{{245, 0}, {1338, 1039}}</string>
+			<string>{{0, 0}, {244, 793}}</string>
+			<string>{{245, 0}, {1196, 793}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>258 110 1582 1060 0 0 1920 1178 </string>
+	<string>0 4 1440 874 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -63,8 +63,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 353}}</string>
-			<string>{{0, 363}, {246, 655}}</string>
+			<string>{{0, 0}, {246, 267}}</string>
+			<string>{{0, 277}, {246, 495}}</string>
 		</array>
 	</dict>
 	<key>Widget</key>
@@ -109,7 +109,7 @@
 		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>front</string>
+			<string>back</string>
 		</array>
 	</dict>
 </dict>

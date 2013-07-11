@@ -39,15 +39,15 @@ body {
     display: block;
     top: 0px;
     left: 0px;
-    width: 430px;
-    height: 505px;
+    width: 230px;
+    height: 405px;
 }
 
 #done {
     position: absolute;
-    right: 167px;
+    right: 363px;
     margin-left: auto;
-    bottom: 237px;
+    bottom: 333px;
     margin-top: auto;
 }
 
@@ -80,8 +80,8 @@ body {
     color: black;
     font-family: HelveticaNeue;
     font-size: 10pt;
+    top: 52px;
     left: 28px;
-    top: 112px;
 }
 
 #colTF {
@@ -91,7 +91,7 @@ body {
     font-family: HelveticaNeue;
     font-size: 10pt;
     left: 121px;
-    top: 112px;
+    top: 52px;
 }
 
 #text {
@@ -101,11 +101,11 @@ body {
     overflow: hidden;
     position: absolute;
     margin-top: 0px;
-    color: rgb(255, 255, 255);
+    top: 30px;
     left: 28px;
-    top: 91px;
     width: auto;
     height: auto;
+    color: rgb(255, 255, 255);
 }
 
 .selected #text {
@@ -119,9 +119,9 @@ body {
     overflow: hidden;
     position: absolute;
     margin-top: 0px;
+    top: 30px;
     color: rgb(255, 255, 255);
     left: 121px;
-    top: 91px;
     width: auto;
     height: auto;
 }
@@ -136,9 +136,9 @@ body {
     right: auto;
     bottom: auto;
     margin-top: 0px;
-    width: 169px;
+    top: 118px;
     left: 28px;
-    top: 177px;
+    width: 169px;
 }
 
 #text2 {
@@ -148,9 +148,9 @@ body {
     overflow: hidden;
     position: absolute;
     margin-top: 0px;
-    color: rgb(255, 255, 255);
     left: 28px;
-    top: 156px;
+    color: rgb(255, 255, 255);
+    top: 98px;
     width: auto;
     height: auto;
 }
@@ -170,8 +170,8 @@ body {
     right: auto;
     margin-top: 0px;
     left: 137px;
-    top: 202px;
-    bottom: 495px;
+    top: 144px;
+    bottom: 553px;
     height: auto;
 }
 
@@ -184,7 +184,7 @@ body {
     margin-top: 0px;
     color: rgb(255, 255, 255);
     left: 28px;
-    top: 238px;
+    top: 180px;
     right: 375px;
     width: auto;
     height: auto;
@@ -203,7 +203,7 @@ body {
     margin-top: 0px;
     color: rgb(255, 255, 255);
     left: 28px;
-    top: 273px;
+    top: 215px;
     right: 487px;
     width: auto;
     height: auto;
@@ -220,7 +220,7 @@ body {
     font-family: HelveticaNeue;
     font-size: 10pt;
     left: 28px;
-    top: 295px;
+    top: 237px;
 }
 
 #longTF {
@@ -230,7 +230,7 @@ body {
     font-family: HelveticaNeue;
     font-size: 10pt;
     left: 121px;
-    top: 295px;
+    top: 237px;
 }
 
 #text5 {
@@ -242,10 +242,10 @@ body {
     margin-top: 0px;
     color: rgb(255, 255, 255);
     left: 121px;
-    top: 273px;
+    top: 215px;
     right: 367px;
     width: auto;
-    bottom: 424px;
+    bottom: 482px;
     height: auto;
 }
 
@@ -264,8 +264,8 @@ body {
     right: auto;
     margin-top: 0px;
     left: 137px;
-    top: 326px;
-    bottom: 371px;
+    top: 269px;
+    bottom: 428px;
     height: auto;
 }
 
@@ -277,268 +277,13 @@ body {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    top: 426px;
-    left: 30px;
-    right: 373px;
+    left: 28px;
+    top: 321px;
+    right: 375px;
     width: auto;
     height: auto;
 }
 
 .selected #text6 {
     color: white;
-}
-
-#modelSelectPopup {
-    width: 70px;
-    height: 18px;
-    position: absolute;
-    right: auto;
-    bottom: auto;
-    margin-top: 0px;
-    top: 27px;
-    left: 77px;
-}
-
-#text7 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    top: 27px;
-    left: 28px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text7 {
-    color: white;
-}
-
-#text8 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    left: 28px;
-    top: 64px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text8 {
-    color: white;
-}
-
-#box {
-    border-style: solid;
-    border-width: 1px;
-    position: absolute;
-    margin-top: 0px;
-    height: 300px;
-    width: 188px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    border-bottom-left-radius: 9px;
-    border-bottom-right-radius: 9px;
-    border-color: rgb(246, 255, 248);
-    top: 56px;
-    left: 19px;
-}
-
-#textField {
-    position: absolute;
-    color: black;
-    font-family: HelveticaNeue;
-    font-size: 10pt;
-    top: 676px;
-    width: 250px;
-    left: 224px;
-    visibility: hidden;
-}
-
-#box1 {
-    border-style: solid;
-    border-width: 1px;
-    position: absolute;
-    margin-top: 0px;
-    height: 300px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    border-bottom-left-radius: 9px;
-    border-bottom-right-radius: 9px;
-    border-color: rgb(246, 255, 248);
-    width: 186px;
-    left: 217px;
-    top: 56px;
-}
-
-#text9 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    left: 8px;
-    top: 6px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text9 {
-    color: white;
-}
-
-#text10 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    left: 101px;
-    top: 34px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text10 {
-    color: white;
-}
-
-#popup2 {
-    height: 18px;
-    position: absolute;
-    right: auto;
-    bottom: auto;
-    margin-top: 0px;
-    width: 169px;
-    left: 8px;
-    top: 120px;
-}
-
-#rowTF1 {
-    position: absolute;
-    width: 70px;
-    color: black;
-    font-family: HelveticaNeue;
-    font-size: 10pt;
-    left: 8px;
-    top: 55px;
-}
-
-#colTF1 {
-    position: absolute;
-    width: 70px;
-    color: black;
-    font-family: HelveticaNeue;
-    font-size: 10pt;
-    left: 101px;
-    top: 55px;
-}
-
-#text12 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    left: 8px;
-    top: 99px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text12 {
-    color: white;
-}
-
-#text11 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    left: 8px;
-    top: 34px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text11 {
-    color: white;
-}
-
-#button2 {
-    font-family: HelveticaNeue-Bold;
-    font-size: 12px;
-    text-align: center;
-    width: 60px;
-    cursor: default;
-    -khtml-user-select: none;
-    position: absolute;
-    right: auto;
-    margin-top: 0px;
-    left: 117px;
-    top: 145px;
-    bottom: 134px;
-    height: auto;
-}
-
-#text13 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    top: 374px;
-    left: 20px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text13 {
-    color: white;
-}
-
-#text14 {
-    font-size: 13px;
-    font-family: 'Lucida Grande', Arial, sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: absolute;
-    margin-top: 0px;
-    color: rgb(255, 255, 255);
-    top: 374px;
-    left: 126px;
-    width: auto;
-    height: auto;
-}
-
-.selected #text14 {
-    color: white;
-}
-
-#delayTF {
-    position: absolute;
-    color: black;
-    font-family: HelveticaNeue;
-    font-size: 10pt;
-    top: 372px;
-    left: 63px;
-    width: 50px;
 }
