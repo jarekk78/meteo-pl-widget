@@ -642,3 +642,28 @@ body {
 .selected #text18 {
     color: white;
 }
+
+#FailedToLoadLabel {
+    font-size: 13px;
+    font-family: 'Lucida Grande', Arial, sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    color: rgb(255, 0, 0);
+    text-shadow: rgb(0, 0, 0) 0px 0px 0px;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    left: 26px;
+    top: 27px;
+    width: auto;
+    height: auto;
+    opacity: 0;
+}
+
+.selected #FailedToLoadLabel {
+    color: white;
+}

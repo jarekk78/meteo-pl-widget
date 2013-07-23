@@ -4,6 +4,8 @@
  according to the license.txt file included in the project.
  */
 
+var displayed_forecast = '';
+
 //
 // Function: load()
 // Called by HTML body element's onload event when the widget is ready to start
@@ -163,34 +165,46 @@ function loadForecastImage() {
     var day = cd.getDate();
     var month = cd.getMonth() + 1;
     var year = cd.getFullYear();
-    date = year+(month<10?"0"+month:month)+(day<10?"0"+day:day);
-    date += (hour<10?"0"+hour:hour);
+    date = year+(month<10?"0"+month:month)+(day<10?"0"+day:day)+(hour<10?"0"+hour:hour);
+  
+    var row = get("rowTF"+(model?"":"1"));
+    var col = get("colTF"+(model?"":"1"));
+
+    var tobe_displayed_forecast = date+(with_legend?"Leg":"NoL")+(model?1:0)+row+","+col;
+    
+    if (tobe_displayed_forecast == displayed_forecast) return;
     
     var newScrollAreaContent = "";
 
     var width = with_legend?370:540;
+  
+    var img_src = "";  
+    if (model) 
+        img_src = "http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
+    else 
+        img_src = "http://www.meteo.pl/metco/mgram_pict.php?ntype=2n&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
+
+    // preloading...
+	var img = new Image();
+	img.src = img_src;
+	img.onload = function() {
+        document.getElementById("FailedToLoadLabel").style.opacity = 0;
+        newScrollAreaContent = "<img style='float:left' width="+width+" height=660 src='"+img_src+"'>";
+        if (with_legend) {
+            if (model)
+                newScrollAreaContent = "<img width="+(540-width)+" height=660 style='float:left' src='http://www.meteo.pl/um/metco/leg_um_pl_20120615.png'>"+newScrollAreaContent;
+            else
+                newScrollAreaContent = "<img width="+(540-width)+" height=660 style='float:left' src='http://www.meteo.pl/metco/leg4_pl.png'>"+newScrollAreaContent;
+        }
+        scrollAreaToChange.object.content.innerHTML = newScrollAreaContent;
+        scrollAreaToChange.object.refresh();
     
-    if (model) {
-        var row = get("rowTF");
-        var col = get("colTF");
-        newScrollAreaContent = "<img width="+width+" height=660 style='float:left' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
-        document.getElementById("textField").value = "http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
-    }
-    else {
-        var row = document.getElementById("rowTF1").value;
-        var col = document.getElementById("colTF1").value;
-        newScrollAreaContent = "<img style='float:left' width="+width+" height=660 src='http://www.meteo.pl/metco/mgram_pict.php?ntype=2n&fdate="+date+"&row="+row+"&col="+col+"&lang=pl'>";
-        document.getElementById("textField").value = "http://www.meteo.pl/metco/mgram_pict.php?ntype=2n&fdate="+date+"&row="+row+"&col="+col+"&lang=pl";
-    }
-    if (with_legend) {
-        if (model)
-            newScrollAreaContent = "<img width="+(540-width)+" height=660 style='float:left' src='http://www.meteo.pl/um/metco/leg_um_pl_20120615.png'>"+newScrollAreaContent;
-        else
-            newScrollAreaContent = "<img width="+(540-width)+" height=660 style='float:left' src='http://www.meteo.pl/metco/leg4_pl.png'>"+newScrollAreaContent;
-//        document.getElementById("frontImg").width=document.getElementById("frontImg").width+50;
-    }
-    scrollAreaToChange.object.content.innerHTML = newScrollAreaContent;
-    scrollAreaToChange.object.refresh();
+        displayed_forecast = tobe_displayed_forecast;
+	};
+	img.onerror = function() {
+        document.getElementById("FailedToLoadLabel").style.opacity = 1;
+	};
+    // …preloading.
 }
 
 function getDefaultPrefeneceForKey( def, key ) {
@@ -275,8 +289,7 @@ function delaySliderChange(event) {
 }
 
 
-function earlierBtnClick(event)
-{
+function earlierBtnClick(event) {
     set("slider", get("slider")-1);
     loadForecastImage();
 }
@@ -286,5 +299,10 @@ function laterBtnClick(event) {
     var val = get("slider");
     val++;
     set("slider", val);
+    loadForecastImage();
+}
+
+
+function failedToLoadLabelClicked(event) {
     loadForecastImage();
 }

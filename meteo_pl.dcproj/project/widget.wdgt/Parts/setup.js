@@ -10,6 +10,7 @@ var dashcodePartSpecs = {
     "button2": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "selectedCityCOAMPS", "rightImageWidth": 5, "text": "Apply" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "earlierBtn": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "earlierBtnClick", "rightImageWidth": 5, "text": "Earlier" },
+    "FailedToLoadLabel": { "text": "Failed to load requested forecast. Click here to refresh.", "view": "DC.Text" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
     "laterBtn": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "laterBtnClick", "rightImageWidth": 5, "text": "Later" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
@@ -31,6 +32,7 @@ var dashcodePartSpecs = {
     "text8": { "text": "UM configuration:", "view": "DC.Text" },
     "text9": { "text": "COAMPS configuration:", "view": "DC.Text" }
 };
+
 
 
 

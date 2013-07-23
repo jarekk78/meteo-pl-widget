@@ -148,3 +148,35 @@ At 17:29 the 06 forecast is still not available. Why? Is it always like this?
 citi lists are awfully sorted. unix sort leaves "Łodz" at the end of the list. Textwrangler sort mixes "L" and "Ł". Any idea anyone?
 
 
+Email feedback
+--------------
+W sumie zauważyłem, że przydało by się zachowanie ostatniej pobranej prognozy i nie usuwanie jej w przypadku braku połączenia z Internetem :)
+
+Pozdrawiam, KS
+
+Let's have a look (it's 2:24 am, hope I won't have to fix too much tomorrow ;p). 
+Keeping the previously downloaded forecast may be divided into two steps:
+1. Not downloading the same again (right now it is refreshed on every show() event)
+2. Downloading to memory first - before updating display.
+
+Step 1. adding displayed_forecast variable and comparing it to tobe_displayed_forecast
+which equals concatenated date/model/legend. Should work. Is there any way to force the show() event 
+in Dashcode?
+Step 2. After a quick google for "preload images javascript" I've found no ready solution (without jQuery). 
+Hence a test first:
+
+<!DOCTYPE>
+<script>
+	document.write( "start... " );
+	var img = new Image();
+	img.onload = function() {
+		document.write( "loaded" );
+	};
+	img.onerror = function() {
+		document.write( "failed" );
+	};
+	img.src = "https://secure.gravatar.com/avatar/23e61a415e434228f77dc549487b7f3e?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png";
+</script>
+
+Appears to work correctly. Will the image be cached? Or downloaded again if used in scrollarea?
+Quick tests show that step 2 is completed.
