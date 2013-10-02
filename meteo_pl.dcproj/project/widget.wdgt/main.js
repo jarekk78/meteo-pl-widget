@@ -165,7 +165,7 @@ function loadForecastImage() {
     var day = cd.getDate();
     var month = cd.getMonth() + 1;
     var year = cd.getFullYear();
-    date = year+(month<10?"0"+month:month)+(day<10?"0"+day:day)+(hour<10?"0"+hour:hour);
+    date = year+""+(month<10?"0"+month:month)+(day<10?"0"+day:day)+(hour<10?"0"+hour:hour);
   
     var row = get("rowTF"+(model?"":"1"));
     var col = get("colTF"+(model?"":"1"));
